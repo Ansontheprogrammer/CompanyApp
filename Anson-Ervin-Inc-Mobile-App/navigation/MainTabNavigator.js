@@ -3,12 +3,13 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import HomeScreenView from '../screens/HomeView';
+import AboutScreen from '../screens/AboutView';
+import ContactScreen from '../screens/ContactView';
+import ProductView from '../screens/ProductView'
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  Home: HomeScreenView,
 });
 
 HomeStack.navigationOptions = {
@@ -25,12 +26,30 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const ProductStack = createStackNavigator({
+  Products: ProductView,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+ProductStack.navigationOptions = {
+  tabBarLabel: 'Products',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const AboutUsStack = createStackNavigator({
+  About: AboutScreen,
+});
+
+AboutUsStack.navigationOptions = {
+  tabBarLabel: 'About',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -39,12 +58,12 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const ContactStack = createStackNavigator({
+  Contact: ContactScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ContactStack.navigationOptions = {
+  tabBarLabel: 'Contact',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -55,6 +74,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  ProductStack,
+  AboutUsStack,
+  ContactStack,
 });
