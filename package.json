@@ -1,0 +1,8 @@
+{
+  "name": "AEApp",
+  "version": "1.0.0",
+  "description": "Company application",
+  "main": "index.js",
+  "author": "Anson Ervin",
+  "license": "MIT"
+}
