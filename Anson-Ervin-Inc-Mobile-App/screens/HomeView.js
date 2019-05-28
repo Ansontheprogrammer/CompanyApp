@@ -14,8 +14,8 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 const imagesDirectory = '../assets/images/'
-const logo = imagesDirectory + 'logo.png'
-const landingPageImage = imagesDirectory + 'landingPageImage.png'
+const logo = imagesDirectory + 'ANSON-ERVIN-INC.png'
+const landingPageImage = imagesDirectory + 'phone.png'
 const landingPageTextColor = 'white';
 const landingPageBackgroundColor = 'black';
 const completedProjects = [
@@ -45,8 +45,7 @@ export default class HomeScreen extends React.Component {
     return () => WebBrowser.openBrowserAsync(url)
   }
 
-  render() {
-    
+  render() {   
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
