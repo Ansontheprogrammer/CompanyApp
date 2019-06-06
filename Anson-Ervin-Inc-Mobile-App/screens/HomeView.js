@@ -14,7 +14,8 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 const imagesDirectory = '../assets/images/'
-const logo = imagesDirectory + 'ANSON-ERVIN-INC.png'
+const logo = imagesDirectory + 'logo-globe.png'
+const logoText = imagesDirectory + 'logo-text.png'
 const landingPageImage = imagesDirectory + 'phone.png'
 const landingPageTextColor = 'white';
 const landingPageBackgroundColor = 'black';
@@ -76,7 +77,7 @@ export default class HomeScreen extends React.Component {
 
           {this.getCompletedProjects()}
         </ScrollView>
-        <View style={styles.welcomeContainer}>
+        <View style={styles.homeViewContainer}>
             <Image
               source={
                 __DEV__
@@ -85,6 +86,14 @@ export default class HomeScreen extends React.Component {
               }
               style={styles.homeViewImage}
             />
+            <Image
+              source={
+                __DEV__
+                  ? require(logoText)
+                  : require(logoText)
+              }
+              style={styles.logoText}
+            />
         </View>
       </View>
     );
@@ -92,11 +101,7 @@ export default class HomeScreen extends React.Component {
 
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
-      return (
-        <Text style={styles.developmentModeText}>
-          In development mode 
-        </Text>
-      );
+      return
     } else {
       return (
         <Text style={styles.developmentModeText}>
@@ -129,17 +134,28 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   welcomeContainer: {
-    alignItems: 'center',
     marginTop: 10,
     marginBottom: 20,
     backgroundColor: landingPageBackgroundColor
   },
   welcomeImage: {
-    width: 400,
-    height: 210,
-    marginTop: 3,
-    paddingLeft: 10,
-    paddingRight: 10,
+    width: 10,
+    height: 85,
+    paddingRight: 200,
+  },
+  homeViewContainer: {
+    marginTop: 10,
+    backgroundColor: landingPageBackgroundColor,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  logoText: {
+    width: 150,
+    height: 20,
+    marginLeft: 50,
+    paddingTop: 10,
+    marginTop: 175
+    
   },
   homeViewImage: {
     width: 200,

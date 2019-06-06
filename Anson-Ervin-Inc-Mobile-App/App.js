@@ -3,12 +3,6 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
-import {createStackNavigator, createAppContainer} from 'react-navigation';
-import WebsiteScreen from './screens/productScreens/WebsiteScreen'
-import WebAppScreen from './screens/productScreens/WebsiteScreen'
-import CrossPlatformScreen from './screens/productScreens/WebsiteScreen'
-import NativeAppScreen from './screens/productScreens/WebsiteScreen'
-
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
@@ -27,10 +21,7 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator>
-          <ProductNavigator />
-          </AppNavigator>
-          
+          <AppNavigator />
         </View>
       );
     }
@@ -69,12 +60,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
-const ProductStack = createStackNavigator({
-  Websites : WebsiteScreen,
-  WebApps: WebAppScreen,
-  CrossPlatformApps: CrossPlatformScreen,
-  NativeApps: NativeAppScreen
-})
-
-const ProductNavigator = createAppContainer(ProductStack)
