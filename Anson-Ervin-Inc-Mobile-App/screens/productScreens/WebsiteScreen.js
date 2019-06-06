@@ -15,10 +15,6 @@ import {ListItem } from 'react-native-elements';
 
 import { WebBrowser } from 'expo';
 
-import { MonoText } from '../components/StyledText';
-
-const imagesDirectory = '../assets/images/'
-const logo = imagesDirectory + 'ANSON-ERVIN-INC.png'
 const landingPageTextColor = 'white';
 const landingPageBackgroundColor = 'black';
 
@@ -33,54 +29,13 @@ export default class ProductScreen extends React.Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation
+    
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.welcomeContainer}>
-              <Image
-                source={
-                  __DEV__
-                    ? require(logo)
-                    : require(logo)
-                }
-                style={styles.welcomeImage}
-              />
+            <View>
+                <Text>Websites</Text>
             </View>
-          <View style={styles.welcomeContainer}>
-            <Text style={styles.getStartedText}>Products{'\n'}</Text>
-          </View>
-
-          <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>Anson Ervin Inc.{'\n'}</Text>
-            {this._maybeRenderDevelopmentModeWarning()}
-          </View>
-            <FlatList
-              contentContainerStyle={styles.productList}
-              data={[
-                {title: 'Websites', key: 'item1'},
-                {title: 'Web Apps', key: 'item1'},
-                {title: 'Cross Platform Apps', key: 'item1'},
-                {title: 'Native Apps', key: 'item1'},
-              ]}
-              renderItem={({item}) => (
-                <TouchableHighlight
-                style = {{alignItems: 'center', margin: 8, paddingTop: 8, paddingBottom: 8, //flex: 1,
-                borderColor: '#d7deeb',
-                borderRadius: 10,
-              }}
-                underlayColor = {'white'}
-                onPress = {()=>{
-                  navigate('WebApps')
-                }}>
-                <Text
-                style= {{color: 'black', textAlign: 'center', fontSize: 20}}
-                title={item.title} 
-              > {item.title} </Text>
-              </TouchableHighlight>
-              )}
-              keyExtractor={item => item.key}
-            />
         </ScrollView>
       </View>
     );
@@ -115,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: landingPageBackgroundColor,
   },
   productList: {
-    backgroundColor: 'grey',
+    backgroundColor: 'black',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -134,11 +89,10 @@ const styles = StyleSheet.create({
     backgroundColor: landingPageBackgroundColor
   },
   welcomeImage: {
-    width: 400,
-    height: 210,
+    width: 200,
+    height: 200,
     marginTop: 3,
-    paddingLeft: 10,
-    paddingRight: 10,
+    marginLeft: -10,
   },
   getStartedContainer: {
     alignItems: 'center',

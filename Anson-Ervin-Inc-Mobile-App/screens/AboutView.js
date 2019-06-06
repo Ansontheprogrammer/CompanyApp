@@ -13,8 +13,7 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 const imagesDirectory = '../assets/images/'
-const logo = imagesDirectory + 'logo.png'
-const landingPageImage = imagesDirectory + 'landingPageImage.png'
+const logo = imagesDirectory + 'ANSON-ERVIN-INC.png'
 const landingPageTextColor = 'white';
 const landingPageBackgroundColor = 'black';
 
@@ -29,6 +28,7 @@ export default class AboutScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>
+              <Text style={styles.getStartedText}>About Us{'\n'}</Text>
               <Image
                 source={
                   __DEV__
@@ -39,7 +39,6 @@ export default class AboutScreen extends React.Component {
               />
             </View>
           <View style={styles.welcomeContainer}>
-            <Text style={styles.getStartedText}>About Me{'\n'}</Text>
             <Text style={styles.getStartedText}>Anson Ervin Inc.{'\n'}</Text>
           
             <Text style={styles.getStartedText}>
@@ -106,10 +105,11 @@ const styles = StyleSheet.create({
     backgroundColor: landingPageBackgroundColor
   },
   welcomeImage: {
-    width: 200,
-    height: 200,
+    width: 400,
+    height: 210,
     marginTop: 3,
-    marginLeft: -10,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   getStartedContainer: {
     alignItems: 'center',

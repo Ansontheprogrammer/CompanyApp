@@ -83,7 +83,7 @@ export default class HomeScreen extends React.Component {
                   ? require(landingPageImage)
                   : require(landingPageImage)
               }
-              style={styles.welcomeImage}
+              style={styles.homeViewImage}
             />
         </View>
       </View>
@@ -135,6 +135,13 @@ const styles = StyleSheet.create({
     backgroundColor: landingPageBackgroundColor
   },
   welcomeImage: {
+    width: 400,
+    height: 210,
+    marginTop: 3,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  homeViewImage: {
     width: 200,
     height: 200,
     marginTop: 3,
