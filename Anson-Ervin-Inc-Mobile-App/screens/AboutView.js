@@ -19,6 +19,7 @@ const landingPageBackgroundColor = 'black';
 
 export default class AboutScreen extends React.Component {
   static navigationOptions = {
+    title: 'About',
     header: null,
   };
 

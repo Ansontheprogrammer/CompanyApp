@@ -1,96 +1,107 @@
 import React from 'react';
 
 import {
+  Image,
   Platform,
   ScrollView,
-  FlatList,
   StyleSheet,
-  Image,
   Text,
+  TouchableOpacity,
   View,
-  TouchableHighlight
 } from 'react-native';
-
-import {ListItem } from 'react-native-elements';
-
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
 const imagesDirectory = '../assets/images/'
 const logo = imagesDirectory + 'logo-globe.png'
+const logoText = imagesDirectory + 'logo-text.png'
+const landingPageImage = imagesDirectory + 'phone.png'
 const landingPageTextColor = 'white';
 const landingPageBackgroundColor = 'black';
+const completedProjects = [
+  'https://labelmeathreat.com',
+  'https://k-butta.com',
+  'https://zootythebarber.com'
+]
 
-export default class ProductScreen extends React.Component {
+export default class PayrollScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
-  constructor() {
-    super();
-    
+  getCompletedProjects(){
+    return completedProjects.map((project, index) => {
+      return (
+        <View style={styles.helpContainer}>
+          <TouchableOpacity key={index} onPress={this.getBrowserInSync(project)} style={styles.helpLink}>
+            <Text key={index + 1} style={styles.helpLinkText}>{project}{'\n'}</Text>
+          </TouchableOpacity>
+        </View>
+      )
+    })
+  }
+  
+  getBrowserInSync(url){
+    return () => WebBrowser.openBrowserAsync(url)
   }
 
-  render() {
-    const { navigate } = this.props.navigation
+  render() {   
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.welcomeContainer}>
-              <Image
+          <View style={styles.welcomeContainer}>
+            <Image
                 source={
                   __DEV__
                     ? require(logo)
                     : require(logo)
                 }
                 style={styles.welcomeImage}
-              />
-              <Text style={styles.header}>Products{'\n'}</Text>
-            </View>
-
-          <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>Anson Ervin Inc.{'\n'}</Text>
-            {this._maybeRenderDevelopmentModeWarning()}
-          </View>
-            <FlatList
-              contentContainerStyle={styles.productList}
-              data={[
-                {title: 'Websites', key: 'item1'},
-                {title: 'Web Apps', key: 'item1'},
-                {title: 'Cross Platform Apps', key: 'item1'},
-                {title: 'Native Apps', key: 'item1'},
-              ]}
-              renderItem={({item}) => (
-                <TouchableHighlight
-                style = {{alignItems: 'center', margin: 8, paddingTop: 8, paddingBottom: 8, //flex: 1,
-                borderColor: '#d7deeb',
-                borderRadius: 10,
-              }}
-                underlayColor = {'white'}
-                onPress = {()=>{
-                  navigate('WebApps')
-                }}>
-                <Text
-                style= {{color: 'white', textAlign: 'center', fontSize: 20}}
-                title={item.title} 
-              > {item.title} </Text>
-              </TouchableHighlight>
-              )}
-              keyExtractor={item => item.key}
             />
+            <Text style={styles.header}>Anson Ervin Inc.{'\n'}</Text>
+          </View>
+
+          <View>
+            {this._maybeRenderDevelopmentModeWarning()}
+            <Text style={styles.subHeading}>
+              Mission
+            </Text>
+            <Text style={styles.paragraph}>
+              Providing small business and startups with affordable software products, one business at a time!
+            </Text>
+          </View>
+
+          <Text style={styles.subHeading}>
+              Works
+          </Text>
+          {this.getCompletedProjects()}
         </ScrollView>
+        <View style={styles.homeViewContainer}>
+            <Image
+              source={
+                __DEV__
+                  ? require(landingPageImage)
+                  : require(landingPageImage)
+              }
+              style={styles.homeViewImage}
+            />
+            <Image
+              source={
+                __DEV__
+                  ? require(logoText)
+                  : require(logoText)
+              }
+              style={styles.logoText}
+            />
+        </View>
       </View>
     );
   }
 
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
-      return (
-        <Text style={styles.developmentModeText}>
-          In development mode 
-        </Text>
-      );
+      return
     } else {
       return (
         <Text style={styles.developmentModeText}>
@@ -112,9 +123,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: landingPageBackgroundColor,
   },
-  productList: {
-    backgroundColor: 'black',
-  },
   developmentModeText: {
     marginBottom: 20,
     color: landingPageTextColor,
@@ -131,6 +139,37 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 50
   },
+  homeViewContainer: {
+    marginTop: 10,
+    backgroundColor: landingPageBackgroundColor,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  logoText: {
+    width: 150,
+    height: 20,
+    marginLeft: 50,
+    paddingTop: 10,
+    marginTop: 175
+    
+  },
+  homeViewImage: {
+    width: 200,
+    height: 200,
+    marginTop: 3,
+    marginLeft: -10,
+  },
+
+  homeScreenFilename: {
+    marginVertical: 7,
+  },
+  codeHighlightText: {
+    color: landingPageTextColor,
+  },
+  codeHighlightContainer: {
+    backgroundColor: 'rgba(0,0,0,0.05)',
+    borderRadius: 3,
+  },
   welcomeImage: {
     width: 85,
     height: 85,
@@ -143,28 +182,27 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginTop: 35,
     textAlign: 'center',
-    marginLeft: 53,
+    marginLeft: 23,
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
+
+  subHeading:{
+    fontSize: 40,
     color: landingPageTextColor,
+    lineHeight: 24,
+    marginLeft: 30,
+    marginBottom: 50,
+    paddingTop: 50,
+    marginTop: 20
   },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-  },
-  getStartedText: {
+
+  paragraph: {
     fontSize: 17,
     color: landingPageTextColor,
     lineHeight: 24,
-    textAlign: 'center',
+    marginLeft: 30,
+    marginRight: 30
   },
+
   tabBarInfoContainer: {
     position: 'absolute',
     bottom: 0,

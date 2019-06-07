@@ -52,29 +52,29 @@ export default class HomeScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <Image
-              source={
-                __DEV__
-                  ? require(logo)
-                  : require(logo)
-              }
-              style={styles.welcomeImage}
+                source={
+                  __DEV__
+                    ? require(logo)
+                    : require(logo)
+                }
+                style={styles.welcomeImage}
             />
+            <Text style={styles.header}>Anson Ervin Inc.{'\n'}</Text>
           </View>
 
-          <View style={styles.getStartedContainer}>
+          <View>
             {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Anson Ervin Inc.{'\n'}</Text>
-          
-            <Text style={styles.getStartedText}>
+            <Text style={styles.subHeading}>
+              Mission
+            </Text>
+            <Text style={styles.paragraph}>
               Providing small business and startups with affordable software products, one business at a time!
             </Text>
           </View>
-          
-          <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}></MonoText>
-          </View>
 
+          <Text style={styles.subHeading}>
+              Works
+          </Text>
           {this.getCompletedProjects()}
         </ScrollView>
         <View style={styles.homeViewContainer}>
@@ -135,13 +135,9 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     marginTop: 10,
-    marginBottom: 20,
-    backgroundColor: landingPageBackgroundColor
-  },
-  welcomeImage: {
-    width: 10,
-    height: 85,
-    paddingRight: 200,
+    backgroundColor: landingPageBackgroundColor,
+    flexDirection: 'row',
+    marginBottom: 50
   },
   homeViewContainer: {
     marginTop: 10,
@@ -163,10 +159,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginLeft: -10,
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
+
   homeScreenFilename: {
     marginVertical: 7,
   },
@@ -177,12 +170,39 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.05)',
     borderRadius: 3,
   },
-  getStartedText: {
+  welcomeImage: {
+    width: 85,
+    height: 85,
+    marginLeft: 20
+  },
+  header:{
+    fontSize: 25,
+    color: landingPageTextColor,
+    lineHeight: 24,
+    textAlign: 'left',
+    marginTop: 35,
+    textAlign: 'center',
+    marginLeft: 23,
+  },
+
+  subHeading:{
+    fontSize: 40,
+    color: landingPageTextColor,
+    lineHeight: 24,
+    marginLeft: 30,
+    marginBottom: 50,
+    paddingTop: 50,
+    marginTop: 20
+  },
+
+  paragraph: {
     fontSize: 17,
     color: landingPageTextColor,
     lineHeight: 24,
-    textAlign: 'center',
+    marginLeft: 30,
+    marginRight: 30
   },
+
   tabBarInfoContainer: {
     position: 'absolute',
     bottom: 0,

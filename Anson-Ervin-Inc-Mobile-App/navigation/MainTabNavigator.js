@@ -1,12 +1,19 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { 
+  createStackNavigator, 
+  createBottomTabNavigator,
+  createDrawerNavigator,
+  DrawerItems,
+  SafeAreaView
+} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreenView from '../screens/HomeView';
 import AboutScreen from '../screens/AboutView';
 import ContactScreen from '../screens/ContactView';
 import ProductView from '../screens/ProductView'
+import PayrollScreen from '../screens/PayrollView';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreenView,
@@ -63,7 +70,7 @@ const ContactStack = createStackNavigator({
 });
 
 ContactStack.navigationOptions = {
-  tabBarLabel: 'Contact',
+  tabBarLabel: 'Calendar',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -72,9 +79,30 @@ ContactStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
+
+export const HomeScreen = createBottomTabNavigator({
   HomeStack,
   ProductStack,
-  AboutUsStack,
   ContactStack,
 });
+
+export const additionalOptions = createDrawerNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    About: {
+      screen: AboutScreen,
+    }
+    ,
+    Payroll: {
+      screen: PayrollScreen,
+    }
+  }, {
+    initialRouteName: 'Home',
+    drawerType: 'back',
+    drawerPosition: 'right',
+    drawerWidth: 200,
+    drawerBackgroundColor: 'white'
+  }
+)
