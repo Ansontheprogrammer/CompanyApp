@@ -19,6 +19,13 @@ export default StyleSheet.create({
         borderColor: '#d7deeb',
         borderRadius: 10     
     },
+    appVideos: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+      },
     urlContainer: {
         alignItems: 'center',
     },

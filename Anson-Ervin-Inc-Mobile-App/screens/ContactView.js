@@ -29,7 +29,6 @@ export default class CalendarScreen extends Component {
     };
 
     addItem() {
-        console.log('pressed!');
         this.moveToAdd()
     }
 
@@ -110,26 +109,26 @@ export default class CalendarScreen extends Component {
         // }
     }
 
-    // addItem(item) {
-    //     const time = new Date();
-    //     const strTime = this.timeToString(time);
-    //     if (!this.state.items[strTime]) {
-    //         let items = this.state.items;
-    //         items[strTime] = [];
-    //         items[strTime].push({
-    //             name: 'Item for ' + strTime,
-    //             height: Math.max(50, Math.floor(Math.random() * 150))
-    //         });
-    //         this.setState({
-    //             items: items
-    //         })
-    //
-    //         // this.state.items[strTime].push({
-    //         //     name: 'Item for ' + strTime,
-    //         //     height: Math.max(50, Math.floor(Math.random() * 150))
-    //         // });
-    //     }
-    // }
+    addItem(item) {
+        const time = new Date();
+        const strTime = this.timeToString(time);
+        if (!this.state.items[strTime]) {
+            let items = this.state.items;
+            items[strTime] = [];
+            items[strTime].push({
+                name: 'Item for ' + strTime,
+                height: Math.max(50, Math.floor(Math.random() * 150))
+            });
+            this.setState({
+                items: items
+            })
+    
+            // this.state.items[strTime].push({
+            //     name: 'Item for ' + strTime,
+            //     height: Math.max(50, Math.floor(Math.random() * 150))
+            // });
+        }
+    }
 
     renderItem(item) {
         return (

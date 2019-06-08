@@ -11,6 +11,11 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
+import Video from 'react-native-video';
+
+// Within your render function, assuming you have a file called
+// "background.mp4" in your project. You can include multiple videos
+// on a single screen if you like.
 import styles from './styles/global';
 import homeViewStyles from './styles/homeViewStyles/homeViewStyles';
 
