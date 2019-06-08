@@ -12,8 +12,11 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+
 const imagesDirectory = '../assets/images/'
-const logo = imagesDirectory + 'ANSON-ERVIN-INC.png'
+const logo = imagesDirectory + 'logo-globe.png'
+const logoText = imagesDirectory + 'logo-text.png'
+const landingPageImage = imagesDirectory + 'phone.png'
 const landingPageTextColor = 'white';
 const landingPageBackgroundColor = 'black';
 
@@ -29,7 +32,6 @@ export default class AboutScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>
-              <Text style={styles.getStartedText}>About Us{'\n'}</Text>
               <Image
                 source={
                   __DEV__
@@ -38,11 +40,12 @@ export default class AboutScreen extends React.Component {
                 }
                 style={styles.welcomeImage}
               />
+              <Text style={styles.header}>About Us{'\n'}</Text>
             </View>
-          <View style={styles.welcomeContainer}>
-            <Text style={styles.getStartedText}>Anson Ervin Inc.{'\n'}</Text>
+          <View style={styles.contentContainer}>
+            <Text style={styles.subHeading}>Anson Ervin Inc.{'\n'}</Text>
           
-            <Text style={styles.getStartedText}>
+            <Text style={styles.paragraph}>
               Software developer, with 3 years developing web applications, desktop applications, and mobile applications. I’m always trying to build using new technologies, and hone my skills.
             </Text>
           </View>
@@ -100,22 +103,32 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   welcomeContainer: {
-    alignItems: 'center',
     marginTop: 10,
-    marginBottom: 20,
-    backgroundColor: landingPageBackgroundColor
+    backgroundColor: landingPageBackgroundColor,
+    flexDirection: 'row',
+    marginBottom: 50
   },
-  welcomeImage: {
-    width: 400,
-    height: 210,
+  homeViewContainer: {
+    marginTop: 10,
+    backgroundColor: landingPageBackgroundColor,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  logoText: {
+    width: 150,
+    height: 20,
+    marginLeft: 50,
+    paddingTop: 10,
+    marginTop: 175
+    
+  },
+  homeViewImage: {
+    width: 200,
+    height: 200,
     marginTop: 3,
-    paddingLeft: 10,
-    paddingRight: 10,
+    marginLeft: -10,
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
+
   homeScreenFilename: {
     marginVertical: 7,
   },
@@ -126,12 +139,40 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.05)',
     borderRadius: 3,
   },
-  getStartedText: {
-    fontSize: 17,
+  welcomeImage: {
+    width: 85,
+    height: 85,
+    marginLeft: 20
+  },
+  header:{
+    fontSize: 25,
+    color: landingPageTextColor,
+    lineHeight: 24,
+    textAlign: 'left',
+    marginTop: 35,
+    textAlign: 'center',
+    marginLeft: 23,
+  },
+
+  subHeading:{
+    fontSize: 40,
     color: landingPageTextColor,
     lineHeight: 24,
     textAlign: 'center',
+    marginBottom: 50,
+    paddingTop: 50,
+    marginTop: 20
   },
+
+  paragraph: {
+    fontSize: 17,
+    color: landingPageTextColor,
+    lineHeight: 24,
+    marginLeft: 30,
+    marginRight: 30,
+    textAlignVertical: 'center'
+  },
+
   tabBarInfoContainer: {
     position: 'absolute',
     bottom: 0,
