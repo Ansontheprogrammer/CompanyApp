@@ -59,10 +59,14 @@ export default StyleSheet.create({
       fontSize: 40,
       color: landingPageTextColor,
       lineHeight: 24,
-      marginLeft: 30,
+      paddingLeft: 30,
       marginBottom: 50,
       paddingTop: 50,
-      marginTop: 20
+      paddingBottom: 25,
+      marginTop: 20,
+      borderColor: 'white',
+      borderWidth: 5,
+      borderRadius: 20
     },
   
     paragraph: {
@@ -70,7 +74,8 @@ export default StyleSheet.create({
       color: landingPageTextColor,
       lineHeight: 24,
       marginLeft: 30,
-      marginRight: 30
+      marginRight: 30,
+      marginBottom: 20
     },
   
     tabBarInfoContainer: {
@@ -93,11 +98,10 @@ export default StyleSheet.create({
       backgroundColor: '#fbfbfb',
       paddingVertical: 20,
     },
-    
+
     tabBarInfoText: {
       fontSize: 17,
       color: 'rgba(96,100,109, 1)',
       textAlign: 'center',
     },
   });
-  

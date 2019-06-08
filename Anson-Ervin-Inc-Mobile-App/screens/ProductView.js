@@ -1,26 +1,19 @@
 import React from 'react';
 
 import {
-  Platform,
   ScrollView,
   FlatList,
-  StyleSheet,
   Image,
   Text,
   View,
   TouchableHighlight
 } from 'react-native';
 
-import {ListItem } from 'react-native-elements';
-
-import { WebBrowser } from 'expo';
-
-import { MonoText } from '../components/StyledText';
+import styles from './styles/global'
+import productViewStyles from './styles/productViewStyles';
 
 const imagesDirectory = '../assets/images/'
 const logo = imagesDirectory + 'logo-globe.png'
-const landingPageTextColor = 'white';
-const landingPageBackgroundColor = 'black';
 
 export default class ProductScreen extends React.Component {
   static navigationOptions = {
@@ -29,7 +22,6 @@ export default class ProductScreen extends React.Component {
 
   constructor() {
     super();
-    
   }
 
   render() {
@@ -39,40 +31,32 @@ export default class ProductScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>
               <Image
-                source={
-                  __DEV__
-                    ? require(logo)
-                    : require(logo)
-                }
+                source={require(logo)}
                 style={styles.welcomeImage}
               />
               <Text style={styles.header}>Products{'\n'}</Text>
             </View>
 
-          <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>Anson Ervin Inc.{'\n'}</Text>
-            {this._maybeRenderDevelopmentModeWarning()}
+          <View style={productViewStyles.getStartedContainer}>
+            <Text style={productViewStyles.getStartedText}>Anson Ervin Inc.{'\n'}</Text>
           </View>
             <FlatList
-              contentContainerStyle={styles.productList}
+              contentContainerStyle={productViewStyles.productList}
               data={[
-                {title: 'Websites', key: 'item1'},
-                {title: 'Web Apps', key: 'item1'},
-                {title: 'Cross Platform Apps', key: 'item1'},
-                {title: 'Native Apps', key: 'item1'},
+                {title: 'Websites', key: '1'},
+                {title: 'Web Apps', key: '2'},
+                {title: 'Cross Platform Apps', key: '3'},
+                {title: 'Native Apps', key: '4'},
               ]}
               renderItem={({item}) => (
                 <TouchableHighlight
-                style = {{alignItems: 'center', margin: 8, paddingTop: 8, paddingBottom: 8, //flex: 1,
-                borderColor: '#d7deeb',
-                borderRadius: 10,
-              }}
+                style = {productViewStyles.productTextBtnPress}
                 underlayColor = {'white'}
                 onPress = {()=>{
                   navigate('WebApps')
                 }}>
                 <Text
-                style= {{color: 'white', textAlign: 'center', fontSize: 20}}
+                style= {productViewStyles.productText}
                 title={item.title} 
               > {item.title} </Text>
               </TouchableHighlight>
@@ -83,124 +67,4 @@ export default class ProductScreen extends React.Component {
       </View>
     );
   }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      return (
-        <Text style={styles.developmentModeText}>
-          In development mode 
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: landingPageBackgroundColor,
-  },
-  productList: {
-    backgroundColor: 'black',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: landingPageTextColor,
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    marginTop: 10,
-    backgroundColor: landingPageBackgroundColor,
-    flexDirection: 'row',
-    marginBottom: 50
-  },
-  welcomeImage: {
-    width: 85,
-    height: 85,
-    marginLeft: 20
-  },
-  header:{
-    fontSize: 25,
-    color: landingPageTextColor,
-    lineHeight: 24,
-    textAlign: 'left',
-    marginTop: 35,
-    textAlign: 'center',
-    marginLeft: 53,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: landingPageTextColor,
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: landingPageTextColor,
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 3,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
-});

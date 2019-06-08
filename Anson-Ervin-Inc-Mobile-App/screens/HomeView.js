@@ -4,21 +4,47 @@ import {
   Image,
   ScrollView,
   Text,
+  FlatList,
   TouchableOpacity,
+  TouchableHighlight,
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import styles from './styles/global'
+import styles from './styles/global';
+import homeViewStyles from './styles/homeViewStyles/homeViewStyles';
 
 const imagesDirectory = '../assets/images/'
 const logo = imagesDirectory + 'logo-globe.png'
 const logoText = imagesDirectory + 'logo-text.png'
 const landingPageImage = imagesDirectory + 'phone.png'
+
+const anson = './styles/homeViewStyles/ansonervin.png';
+const saleHogs = './styles/homeViewStyles/saleHogs.png';
+const zooty = './styles/homeViewStyles/zootythebarber.png';
+const label = './styles/homeViewStyles/labelmeathreat.png';
+
 const completedProjects = [
-  'https://labelmeathreat.com',
-  'https://k-butta.com',
-  'https://zootythebarber.com'
+  {
+    description: 'This is our company website that our team worked very hard to create.',
+    url: 'https://ansonervin.com',
+    key: 'anson'
+  },
+  {
+    description: 'Sale Hogs is a third party deal platform. Users can locate deals nearby or abroad on vacation.',
+    url: 'https://salehogs.com',
+    key: 'saleHogs'
+  },
+  {
+    description: 'Zooty the Barber is a website used by Zooty the Barber to relay information to his clients. There is a link on the website so his clients can schedule their appointments. They are able to be notified of hours and personal information about Zooty also.',
+    url: 'https://zootythebarber.com',
+    key: 'zooty'
+  },
+  {
+    description: 'Label me a threat is a website created for a clients clothing line being pushed the summer of 2019.',
+    url: 'https://labelmeathreat.com',
+    key: 'label'
+  }
 ]
 
 export default class HomeScreen extends React.Component {
@@ -29,10 +55,10 @@ export default class HomeScreen extends React.Component {
   getCompletedProjects(){
     return completedProjects.map((project, index) => {
       return (
-        <View style={styles.helpContainer}>
-          <TouchableOpacity key={index} onPress={this.getBrowserInSync(project)} style={styles.helpLink}>
-            <Text key={index + 1} style={styles.helpLinkText}>{project}{'\n'}</Text>
+        <View style={homeViewStyles.urlContainer}>
+          <TouchableOpacity key={index} onPress={this.getBrowserInSync(project)} style={homeViewStyles.url}>
           </TouchableOpacity>
+          <Text key={index + 1} style={homeViewStyles.urlText}>{project}{'\n'}</Text>
         </View>
       )
     })
@@ -55,7 +81,6 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <View>
-            {this._maybeRenderDevelopmentModeWarning()}
             <Text style={styles.subHeading}>
               Mission
             </Text>
@@ -65,10 +90,44 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <Text style={styles.subHeading}>
-              Works
+              Websites
           </Text>
-          {this.getCompletedProjects()}
+          <FlatList
+              contentContainerStyle={homeViewStyles.websiteList}
+              data={completedProjects}
+            
+              renderItem={({item}) => {
+             
+               return (
+                <TouchableHighlight
+                style = {homeViewStyles.productTextBtnPress}
+                underlayColor = {'white'}
+                >
+                <View style = {{ flexDirection: 'row'}}>
+                
+                <Image 
+                  source = {
+                    item.key === 'anson' ? require(anson) : 
+                    item.key === 'saleHogs' ? require(saleHogs) :
+                    item.key === 'zooty' ? require(zooty) :
+                    item.key === 'label' ? require(label) :
+                    null
+                  }
+                  style = {styles.welcomeImage}
+                />
+                <Text style= {{color: 'white', marginLeft: 20}}>{item.description}</Text>
+                </View>
+              </TouchableHighlight>
+              )}
+            }
+              keyExtractor={item => item.key}
+            />
+
+        <Text style={styles.subHeading}>
+              Apps
+          </Text>
         </ScrollView>
+
         <View style={styles.homeViewContainer}>
             <Image
               source={ require(landingPageImage) }
