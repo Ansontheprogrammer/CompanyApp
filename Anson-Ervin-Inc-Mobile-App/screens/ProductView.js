@@ -43,17 +43,17 @@ export default class ProductScreen extends React.Component {
             <FlatList
               contentContainerStyle={productViewStyles.productList}
               data={[
-                {title: 'Websites', key: '1'},
-                {title: 'Web Apps', key: '2'},
-                {title: 'Cross Platform Apps', key: '3'},
-                {title: 'Native Apps', key: '4'},
+                {title: 'Websites', key: '1', screen: 'Website'},
+                {title: 'Web Apps', key: '2', screen: 'WebApp'},
+                {title: 'Cross Platform Apps', key: '3', screen: 'CrossPlatform'},
+                {title: 'Native Apps', key: '4', screen: 'NativeApp'},
               ]}
               renderItem={({item}) => (
                 <TouchableHighlight
                 style = {productViewStyles.productTextBtnPress}
                 underlayColor = {'white'}
                 onPress = {()=>{
-                  navigate('WebApps')
+                  this.props.navigation.navigate(item.screen)
                 }}>
                 <Text
                 style= {productViewStyles.productText}

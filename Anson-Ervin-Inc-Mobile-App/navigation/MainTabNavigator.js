@@ -14,6 +14,10 @@ import AboutScreen from '../screens/AboutView';
 import ContactScreen from '../screens/ContactView';
 import ProductView from '../screens/ProductView'
 import PayrollScreen from '../screens/PayrollView';
+import CrossPlatformView from '../screens/productScreens/CrossPlatformAppScreen';
+import NativeAppView from '../screens/productScreens/NativeAppScreen';
+import WebAppView from '../screens/productScreens/WebAppScreen';
+import WebsiteView from '../screens/productScreens/WebsiteScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreenView,
@@ -33,9 +37,21 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const ProductStack = createStackNavigator({
+
+const ProductStack = createStackNavigator(
+  {
   Products: ProductView,
-});
+  CrossPlatfrom: CrossPlatformView,
+  NativeApp: NativeAppView,
+  WebApp: WebAppView,
+  Website: WebsiteView,
+  About: AboutScreen
+  }, {
+    initialRouteName: 'Products',
+    headerBackTitleVisible: true,
+    headerMode: 'screen'
+  }
+);
 
 ProductStack.navigationOptions = {
   tabBarLabel: 'Products',
@@ -80,21 +96,20 @@ ContactStack.navigationOptions = {
 };
 
 
-export const HomeScreen = createBottomTabNavigator({
+const HomeScreen = createBottomTabNavigator({
   HomeStack,
   ProductStack,
   ContactStack,
 });
 
-export const additionalOptions = createDrawerNavigator(
+export default createDrawerNavigator(
   {
     Home: {
       screen: HomeScreen,
     },
     About: {
       screen: AboutScreen,
-    }
-    ,
+    },
     Payroll: {
       screen: PayrollScreen,
     }
