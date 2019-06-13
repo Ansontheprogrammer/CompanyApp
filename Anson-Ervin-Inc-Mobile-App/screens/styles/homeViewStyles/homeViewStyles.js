@@ -6,6 +6,23 @@ export default StyleSheet.create({
         marginLeft: 40,
         marginRight: 40,
     },
+
+    websiteListImage: {
+        width: 350,
+        height: 200,
+        alignSelf: 'center',
+        borderColor: 'black',
+        borderWidth: 5,
+        borderRadius: 20,
+        padding: 25
+    },
+
+    websiteListText: {
+        marginTop: 25,
+        color: 'white',
+        flexDirection: 'row',
+    },
+
     productText: {
         color: 'white', 
         textAlign: 'center', 
@@ -25,7 +42,7 @@ export default StyleSheet.create({
         left: 0,
         bottom: 0,
         right: 0,
-      },
+    },
     urlContainer: {
         alignItems: 'center',
     },

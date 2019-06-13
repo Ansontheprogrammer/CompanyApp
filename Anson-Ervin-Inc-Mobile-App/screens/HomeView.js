@@ -76,14 +76,14 @@ export default class HomeScreen extends React.Component {
   render() {   
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
+        <View style={styles.welcomeContainer}>
             <Image
                 source={ require(logo) }
                 style={styles.welcomeImage}
             />
             <Text style={styles.header}>Anson Ervin Inc.{'\n'}</Text>
-          </View>
+        </View>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
           <View>
             <Text style={styles.subHeading}>
@@ -108,7 +108,7 @@ export default class HomeScreen extends React.Component {
                 style = {homeViewStyles.productTextBtnPress}
                 underlayColor = {'white'}
                 >
-                <View style = {{ flexDirection: 'row'}}>
+                <View>
                 
                 <Image 
                   source = {
@@ -118,9 +118,9 @@ export default class HomeScreen extends React.Component {
                     item.key === 'label' ? require(label) :
                     null
                   }
-                  style = {styles.welcomeImage}
+                  style = {homeViewStyles.websiteListImage}
                 />
-                <Text style= {{color: 'white', marginLeft: 20}}>{item.description}</Text>
+                <Text style= {homeViewStyles.websiteListText}>{item.description}</Text>
                 </View>
               </TouchableHighlight>
               )}
@@ -130,7 +130,7 @@ export default class HomeScreen extends React.Component {
 
         <Text style={styles.subHeading}>
               Apps
-          </Text>
+        </Text>
         </ScrollView>
 
         <View style={styles.homeViewContainer}>
