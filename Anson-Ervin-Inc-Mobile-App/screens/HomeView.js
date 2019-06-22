@@ -33,22 +33,26 @@ const completedProjects = [
   {
     description: 'This is our company website that our team worked very hard to create.',
     url: 'https://ansonervin.com',
-    key: 'anson'
+    key: 'anson',
+    title: 'Our Website'
   },
   {
     description: 'Sale Hogs is a third party deal platform. Users can locate deals nearby or abroad on vacation.',
     url: 'https://salehogs.com',
-    key: 'saleHogs'
+    key: 'saleHogs',
+    title: 'Sale Hogs'
   },
   {
     description: 'Zooty the Barber is a website used by Zooty the Barber to relay information to his clients. There is a link on the website so his clients can schedule their appointments. They are able to be notified of hours and personal information about Zooty also.',
     url: 'https://zootythebarber.com',
-    key: 'zooty'
+    key: 'zooty',
+    title: 'Zooty the Barber'
   },
   {
     description: 'Label me a threat is a website created for a clients clothing line being pushed the summer of 2019.',
     url: 'https://labelmeathreat.com',
-    key: 'label'
+    key: 'label',
+    title: 'Label Me A Threat'
   }
 ]
 
@@ -108,19 +112,19 @@ export default class HomeScreen extends React.Component {
                 style = {homeViewStyles.productTextBtnPress}
                 underlayColor = {'white'}
                 >
-                <View>
-                
-                <Image 
-                  source = {
-                    item.key === 'anson' ? require(anson) : 
-                    item.key === 'saleHogs' ? require(saleHogs) :
-                    item.key === 'zooty' ? require(zooty) :
-                    item.key === 'label' ? require(label) :
-                    null
-                  }
-                  style = {homeViewStyles.websiteListImage}
-                />
-                <Text style= {homeViewStyles.websiteListText}>{item.description}</Text>
+                <View style = {homeViewStyles.websiteListItem}>
+                  <Image 
+                    source = {
+                      item.key === 'anson' ? require(anson) : 
+                      item.key === 'saleHogs' ? require(saleHogs) :
+                      item.key === 'zooty' ? require(zooty) :
+                      item.key === 'label' ? require(label) :
+                      null
+                    }
+                    style = {homeViewStyles.websiteListImage}
+                  />
+                  <Text style= {homeViewStyles.websiteListHeader}>{item.title}</Text>
+                  <Text style= {homeViewStyles.websiteListText}>{item.description}</Text>
                 </View>
               </TouchableHighlight>
               )}

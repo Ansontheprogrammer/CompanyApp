@@ -41,11 +41,10 @@ HomeStack.navigationOptions = {
 const ProductStack = createStackNavigator(
   {
   Products: ProductView,
-  CrossPlatfrom: CrossPlatformView,
+  CrossPlatform: CrossPlatformView,
   NativeApp: NativeAppView,
   WebApp: WebAppView,
   Website: WebsiteView,
-  About: AboutScreen
   }, {
     initialRouteName: 'Products',
     headerBackTitleVisible: true,

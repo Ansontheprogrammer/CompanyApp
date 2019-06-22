@@ -25,7 +25,7 @@ export default class ProductScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             
           <View style={styles.contentContainer}>
-            <Text style={styles.subHeading}>Cross Platform Apps{'\n'}</Text>
+            <Text style={styles.subHeading}>Cross Platform {'\n'}</Text>
           
             <Text style={styles.paragraph}>
               We make cross platform apps with React Native
@@ -33,6 +33,6 @@ export default class ProductScreen extends React.Component {
           </View>
         </ScrollView>
       </View>
-    );
+    )
   }
 }

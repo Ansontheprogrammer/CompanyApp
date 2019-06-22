@@ -3,8 +3,15 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     websiteList: {
         backgroundColor: 'black',
-        marginLeft: 40,
-        marginRight: 40,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+
+    websiteListItem: {
+        borderColor: 'white',
+        borderRadius: 20,
+        borderWidth: 2,
+        padding: 5,
     },
 
     websiteListImage: {
@@ -14,11 +21,22 @@ export default StyleSheet.create({
         borderColor: 'black',
         borderWidth: 5,
         borderRadius: 20,
-        padding: 25
+        padding: 15
+    },
+
+    websiteListHeader: {
+        marginTop: 25,
+        marginBottom: 15,
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 30,
+        flexDirection: 'row',
     },
 
     websiteListText: {
-        marginTop: 25,
+        paddingLeft: 25,
+        paddingRight: 25,
+        marginBottom: 20,
         color: 'white',
         flexDirection: 'row',
     },

@@ -1,14 +1,9 @@
 import React from 'react';
 
 import {
-  Platform,
   ScrollView,
-  FlatList,
-  StyleSheet,
-  Image,
   Text,
   View,
-  TouchableHighlight
 } from 'react-native';
 
 import styles from '../styles/global'

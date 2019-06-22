@@ -1,7 +1,6 @@
 import {
     Platform,
     StyleSheet,
-    Dimensions,
   } from 'react-native';
 
 const landingPageTextColor = 'white';
@@ -12,6 +11,7 @@ export default StyleSheet.create({
       flex: 1,
       backgroundColor: standardBackgroundColor,
     },
+    
     contentContainer: {
       paddingTop: 30,
     },
@@ -36,17 +36,20 @@ export default StyleSheet.create({
       marginTop: 175
       
     },
+
     homeViewImage: {
       width: 200,
       height: 200,
       marginTop: 3,
       marginLeft: -10,
     },
+
     welcomeImage: {
       width: 85,
       height: 85,
       marginLeft: 20
     },
+
     header:{
       fontSize: 25,
       color: landingPageTextColor,
