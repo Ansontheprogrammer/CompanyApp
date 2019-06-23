@@ -12,17 +12,12 @@ import {
 import { WebBrowser } from 'expo';
 
 import Video from 'react-native-video';
-
+import Base from './BaseViewWithoutImage'
 // Within your render function, assuming you have a file called
 // "background.mp4" in your project. You can include multiple videos
 // on a single screen if you like.
 import styles from './styles/global';
 import homeViewStyles from './styles/homeViewStyles/homeViewStyles';
-
-const imagesDirectory = '../assets/images/'
-const logo = imagesDirectory + 'logo-globe.png'
-const logoText = imagesDirectory + 'logo-text.png'
-const landingPageImage = imagesDirectory + 'phone.png'
 
 const anson = './styles/homeViewStyles/ansonervin.png';
 const saleHogs = './styles/homeViewStyles/saleHogs.png';
@@ -79,16 +74,8 @@ export default class HomeScreen extends React.Component {
 
   render() {   
     return (
-      <View style={styles.container}>
-        <View style={styles.welcomeContainer}>
-            <Image
-                source={ require(logo) }
-                style={styles.welcomeImage}
-            />
-            <Text style={styles.header}>Anson Ervin Inc.{'\n'}</Text>
-        </View>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-
+      <Base>
+        <ScrollView contentContainerStyle={styles.contentContainer}>
           <View>
             <Text style={styles.subHeading}>
               Mission
@@ -106,8 +93,8 @@ export default class HomeScreen extends React.Component {
               data={completedProjects}
             
               renderItem={({item}) => {
-             
-               return (
+            
+              return (
                 <TouchableHighlight
                 style = {homeViewStyles.productTextBtnPress}
                 underlayColor = {'white'}
@@ -131,23 +118,8 @@ export default class HomeScreen extends React.Component {
             }
               keyExtractor={item => item.key}
             />
-
-        <Text style={styles.subHeading}>
-              Apps
-        </Text>
         </ScrollView>
-
-        <View style={styles.homeViewContainer}>
-            <Image
-              source={ require(landingPageImage) }
-              style={styles.homeViewImage}
-            />
-            <Image
-              source={ require(logoText) }
-              style={styles.logoText}
-            />
-        </View>
-      </View>
+      </Base>
     );
   }
 }

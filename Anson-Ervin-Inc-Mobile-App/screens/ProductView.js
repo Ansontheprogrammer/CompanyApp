@@ -3,17 +3,15 @@ import React from 'react';
 import {
   ScrollView,
   FlatList,
-  Image,
   Text,
-  View,
-  TouchableHighlight
+  TouchableHighlight,
+  View
 } from 'react-native';
 
 import styles from './styles/global'
 import productViewStyles from './styles/productViewStyles';
 
-const imagesDirectory = '../assets/images/'
-const logo = imagesDirectory + 'logo-globe.png'
+import Base from './BaseView';
 
 export default class ProductScreen extends React.Component {
   static navigationOptions = {
@@ -27,21 +25,10 @@ export default class ProductScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.welcomeContainer}>
-              <Image
-                source={require(logo)}
-                style={styles.welcomeImage}
-              />
-              <Text style={styles.header}>Products{'\n'}</Text>
-            </View>
-
-          <View style={productViewStyles.getStartedContainer}>
-            <Text style={productViewStyles.getStartedText}>Anson Ervin Inc.{'\n'}</Text>
-          </View>
+      <Base>
+      <View>
+        <ScrollView contentContainerStyle={productViewStyles.contentContainer}>
             <FlatList
-              contentContainerStyle={productViewStyles.productList}
               data={[
                 {title: 'Websites', key: '1', screen: 'Website'},
                 {title: 'Web Apps', key: '2', screen: 'WebApp'},
@@ -53,7 +40,7 @@ export default class ProductScreen extends React.Component {
                 style = {productViewStyles.productTextBtnPress}
                 underlayColor = {'white'}
                 onPress = {()=>{
-                  this.props.navigation.navigate(item.screen)
+                 navigate(item.screen)
                 }}>
                 <Text
                 style= {productViewStyles.productText}
@@ -65,6 +52,7 @@ export default class ProductScreen extends React.Component {
             />
         </ScrollView>
       </View>
+     </Base>
     );
   }
 }

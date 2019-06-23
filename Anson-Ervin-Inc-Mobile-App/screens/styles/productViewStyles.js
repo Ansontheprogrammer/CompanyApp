@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 const landingPageTextColor = 'white';
 
 export default StyleSheet.create({
-    productList: {
-        backgroundColor: 'black',
+    contentContainer: {
+        paddingTop: 125,
     },
     getStartedText: {
         fontSize: 17,

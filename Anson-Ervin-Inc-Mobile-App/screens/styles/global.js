@@ -3,8 +3,12 @@ import {
     StyleSheet,
   } from 'react-native';
 
+// **** Theme colors ****
+
 const landingPageTextColor = 'white';
-const standardBackgroundColor = 'black';
+const standardBackgroundColor = '#0D0A0B';
+const complementColor = '#BDA7D3'
+const colorWhite = '#EAD9F0'
 
 export default StyleSheet.create({
     container: {
@@ -12,8 +16,12 @@ export default StyleSheet.create({
       backgroundColor: standardBackgroundColor,
     },
     
-    contentContainer: {
-      paddingTop: 30,
+    backgroundContainer: {
+      flex: 1,
+      width: null,
+      height: null,
+      justifyContent: 'center',
+      alignItems: 'center'
     },
 
     welcomeContainer: {
@@ -22,10 +30,14 @@ export default StyleSheet.create({
       height: 130,
     },
 
+    contentContainer: {
+      paddingTop: 30,
+    },
+
     homeViewContainer: {
       flexDirection: 'row',
       position:'absolute',
-      bottom:0,
+      bottom:100,
     },
 
     logoText: {
@@ -33,8 +45,8 @@ export default StyleSheet.create({
       height: 20,
       marginRight: 25,
       paddingTop: 10,
-      marginTop: 175
-      
+      marginTop: 175,
+      bottom:25,
     },
 
     homeViewImage: {
@@ -47,7 +59,7 @@ export default StyleSheet.create({
     welcomeImage: {
       width: 85,
       height: 85,
-      marginLeft: 20
+      marginLeft: 0
     },
 
     header:{
@@ -57,7 +69,7 @@ export default StyleSheet.create({
       textAlign: 'left',
       marginTop: 35,
       textAlign: 'center',
-      marginLeft: 23,
+      marginLeft: 15,
     },
   
     subHeading:{

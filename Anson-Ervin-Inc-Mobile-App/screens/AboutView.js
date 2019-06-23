@@ -8,10 +8,7 @@ import {
 } from 'react-native';
 
 import styles from './styles/global';
-
-const imagesDirectory = '../assets/images/'
-const logo = imagesDirectory + 'logo-globe.png'
-const logoText = imagesDirectory + 'logo-text.png'
+import Base from './BaseView';
 
 export default class AboutScreen extends React.Component {
   static navigationOptions = {
@@ -22,16 +19,9 @@ export default class AboutScreen extends React.Component {
   render() {
     
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.welcomeContainer}>
-              <Image
-                source={ require(logo) }
-                style={styles.welcomeImage}
-              />
-              <Text style={styles.header}>About Us{'\n'}</Text>
-            </View>
-          <View style={styles.contentContainer}>
+      <Base>
+        <ScrollView>
+          <View >
             <Text style={styles.subHeading}>Anson Ervin Inc.{'\n'}</Text>
           
             <Text style={styles.paragraph}>
@@ -39,7 +29,7 @@ export default class AboutScreen extends React.Component {
             </Text>
           </View>
         </ScrollView>
-      </View>
+      </Base>
     );
   }
 }

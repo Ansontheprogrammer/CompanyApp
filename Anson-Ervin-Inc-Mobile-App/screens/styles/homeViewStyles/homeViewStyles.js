@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     websiteList: {
-        backgroundColor: 'black',
         marginLeft: 20,
         marginRight: 20,
     },
