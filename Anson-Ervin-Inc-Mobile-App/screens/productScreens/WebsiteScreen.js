@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import styles from '../styles/global'
-
+import Base from '../BaseView'
 export default class ProductScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -21,8 +21,9 @@ export default class ProductScreen extends React.Component {
   render() {
     
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <Base>
+        <View>
+        <ScrollView contentContainerStyle={styles.contentContainer}>
             
           <View style={styles.contentContainer}>
             <Text style={styles.subHeading}>Websites{'\n'}</Text>
@@ -32,7 +33,8 @@ export default class ProductScreen extends React.Component {
             </Text>
           </View>
         </ScrollView>
-      </View>
+        </View>
+      </Base>
     );
   }
 }

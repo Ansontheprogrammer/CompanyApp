@@ -92,7 +92,7 @@ export default StyleSheet.create({
       lineHeight: 24,
       marginLeft: 30,
       marginRight: 30,
-      marginBottom: 20
+      marginBottom: 20,
     },
   
     tabBarInfoContainer: {
